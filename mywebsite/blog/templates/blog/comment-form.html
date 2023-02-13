@@ -1,0 +1,30 @@
+{% load static %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-9 col-md-10 mx-auto">
+		<form method="post"  action=".">{%csrf_token %}
+		{% bootstrap_form form show_label=False %}
+
+</div>
+<div class="col-3 col-md-2 mx-auto">
+			{% if not obj.publish_date or obj.publish_date > now %}
+	<button type="submit" class="btn btn-primary" disabled>post</button>
+			{% else %}
+
+			<button type="submit" class="btn btn-primary">post</button>
+			{% endif %}
+			</div>
+		  </div>
+
+		</form>
+		
+		</div>
+	  </div>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block content %}
+
+{% if messages %} 
+{% load static %}
+
+<div class="alert alert-success messages" role="alert"> {% for message in messages %} 
+
+  <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+ <img src="{% static "admin/img/icon-yes.svg" %}" alt="My image"> {{ message}}
+</div>
+{% endfor %} 
+</div>
+{% endif %}
+
+
+    <div class="row">
+        {% for object in blog_list %}
+        {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
+        
+        
+        {% endfor %}
+        
+        
+        </div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a></li>
+    {% endif %}
+    
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{page_obj.paginator.num_pages}}">last &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+  
+  <small class="text-muted">
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+  </small>
+</nav>
+
+{% endblock %}

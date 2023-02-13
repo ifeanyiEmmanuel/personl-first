@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}
+ Edit : {{comment | truncatewords:2}}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="mod" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+
+      </div>
+      <div class="modal-body">
+        
+        <form method="post" action="." >
+    {% csrf_token %}
+
+    <div class="form-group">
+      
+    {{form.as_p}}
+</div>
+    
+    
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        
+        <a href="{% url 'delete_comment' obj.slug comment.c_id %}" class="btn btn-danger">Delete comment</a>
+      
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+
+<div class="col-12 col-md-10 mb-3 mx-auto">
+    <div class="card">
+    <div class="card-body">
+
+
+<h5 class="card-title">Edit comment </h5>
+        
+<form method="post" action="." >
+    {% csrf_token %}
+
+    <div class="form-group">
+      
+    {{form.as_p}}
+</div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <div class="mt-4">
+       <a href="{% url 'delete_comment' obj.slug comment.c_id %}" class="alert-link">Delete comment</a>
+   </div> 
+</div>
+</div>
+</div>
+
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+-->
+{% endblock %}

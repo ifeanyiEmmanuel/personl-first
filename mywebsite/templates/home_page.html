@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Home | {{title|title}}{% endblock %}
+{% block content %}
+{% load static %}
+	
+{% if messages %}
+
+
+<div class="alert alert-success alert-dismissable messages mb-2 mt-2" role="alert"> {% for message in messages %} 
+
+  <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
+	  PSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iIzcwYmYyYiIgZD0i
+	  TTE0MTIgNzM0cTAtMjgtMTgtNDZsLTkxLTkwcS0xOS0xOS00NS0xOXQtNDUgMTlsLTQwOCA0MDct
+	  MjI2LTIyNnEtMTktMTktNDUtMTl0LTQ1IDE5bC05MSA5MHEtMTggMTgtMTggNDYgMCAyNyAxOCA0
+	  NWwzNjIgMzYycTE5IDE5IDQ1IDE5IDI3IDAgNDYtMTlsNTQzLTU0M3ExOC0xOCAxOC00NXptMjUy
+	  IDE2MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5
+	  LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUg
+	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image">  
+	  
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+	  
+{{ message}}
+</div>
+{% endfor %} 
+</div>
+
+
+
+{% endif %}
+
+{% for a in blog_list %}
+{% include 'blog/list-inline.html' with blog_post=a truncate=True detail=False %}
+{% endfor %}
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    {% if blog_list.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>
+    <li class="page-item"><a class="page-link" href="?page={{blog_list.previous_page_number}}">Previous</a></li>
+    {% endif %}
+    
+    {% if blog_list.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{blog_list.next_page_number}}">Next</a></li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{blog_list.paginator.num_pages}}">Last &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+  
+  <small class="text-muted">
+    Page {{blog_list.number}} of {{blog_list.paginator.num_pages}}.
+  </small>
+</nav>
+
+
+{% endblock %}

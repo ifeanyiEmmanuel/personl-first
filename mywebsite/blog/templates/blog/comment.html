@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block title %} Comments {% endblock %}
+
+{% block head %}
+<nav class="nav fixed-top bg-light " >
+  <a class="nav-link " id="black" href="{{obj.get_absolute_url}}">
+  &#x2190;
+  </a>
+  
+  <a class="nav-link disabled" href="#">{{obj.title|title|truncatewords:5}}</a>
+  
+  {% include 'blog/comment-form.html' %}
+  
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+
+{% if comment %}
+{% include 'blog/comment-display.html' %}
+
+{% endif %}
+
+
+{% endblock %}

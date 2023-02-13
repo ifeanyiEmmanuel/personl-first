@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-10">
+{% if title %} 
+{% load static %}
+
+{{title}}</h1>
+{% endif %}
+
+
+<form method="post" action=".">
+{% csrf_token %}
+{% bootstrap_form form %}
+{% bootstrap_button "Send" button_type="submit"   extra_classes="btn btn-block btn-primary"	%}
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

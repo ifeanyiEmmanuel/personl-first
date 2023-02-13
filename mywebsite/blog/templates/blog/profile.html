@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+
+	    {% block style %}
+	    
+	    
+.flex{
+display:flex;
+justify-content:space-between;
+}
+	    
+	   
+	    {% endblock %}
+
+
+
+{% block title %}
+Dashboard | Profile
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  
+  <div class="col-12 col-md-10  mb-4">
+    <form action="" method="post">
+      {% csrf_token %}
+    {{form}}
+
+<button class="btn-primary" type="submit">Sort</button>
+    </form>
+    
+    </div>
+    
+  <div class="col-12 col-md-10 mx-auto">
+  
+<p>Name: {{full_name|title}} <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
+	  PSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iIzcwYmYyYiIgZD0i
+	  TTE0MTIgNzM0cTAtMjgtMTgtNDZsLTkxLTkwcS0xOS0xOS00NS0xOXQtNDUgMTlsLTQwOCA0MDct
+	  MjI2LTIyNnEtMTktMTktNDUtMTl0LTQ1IDE5bC05MSA5MHEtMTggMTgtMTggNDYgMCAyNyAxOCA0
+	  NWwzNjIgMzYycTE5IDE5IDQ1IDE5IDI3IDAgNDYtMTlsNTQzLTU0M3ExOC0xOCAxOC00NXptMjUy
+	  IDE2MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5
+	  LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUg
+	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image">  </p>
+	  
+	  </div>
+  <div class="col-12 col-md-10 mx-auto">
+  
+<p>Status:{% if request.user.is_superuser  %} Admin {% else %} Staff {% endif %} <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
+	  PSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iIzcwYmYyYiIgZD0i
+	  TTE0MTIgNzM0cTAtMjgtMTgtNDZsLTkxLTkwcS0xOS0xOS00NS0xOXQtNDUgMTlsLTQwOCA0MDct
+	  MjI2LTIyNnEtMTktMTktNDUtMTl0LTQ1IDE5bC05MSA5MHEtMTggMTgtMTggNDYgMCAyNyAxOCA0
+	  NWwzNjIgMzYycTE5IDE5IDQ1IDE5IDI3IDAgNDYtMTlsNTQzLTU0M3ExOC0xOCAxOC00NXptMjUy
+	  IDE2MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5
+	  LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUg
+	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image">  </p>
+	  
+	  </div>
+	  
+	  
+	  </div>
+
+    <div class="row">
+        {% for object in object_list %}
+        {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
+        
+        
+        {% endfor %}
+        
+        </div>
+        
+   <footer class=" footer mt-4 py-3 fixed-bottom bg-white shadow-sm ">
+     
+
+<div class="container-fluid">
+  <span class="text-muted flex">
+    
+   <a href="{% url 'home' %}" class="card-link mx-3" id="black">
+     
+     <img src="data:image/svg+xml;base64,
+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0
+PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGQ9Ik0xMCAyMHYtNmg0djZoNXYt
+OGgzTDEyIDMgMiAxMmgzdjh6Ii8+CiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJu
+b25lIi8+Cjwvc3ZnPgo="
+ alt="home "/>
+
+        </a>
+
+          <a href="{% url 'blog_new' %}" class="card-link mx-3" id="black">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0
+PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMyAxNy4yNVYyMWgzLjc1TDE3Ljgx
+IDkuOTRsLTMuNzUtMy43NUwzIDE3LjI1ek0yMC43MSA3LjA0Yy4zOS0uMzkuMzktMS4wMiAwLTEu
+NDFsLTIuMzQtMi4zNGMtLjM5LS4zOS0xLjAyLS4zOS0xLjQxIDBsLTEuODMgMS44MyAzLjc1IDMu
+NzUgMS44My0xLjgzeiIvPjwvc3ZnPg==" alt="create"/>
+            
+            
+            
+          </a>
+
+   <a href="#" class="card-link mx-3" id="black">
+  <img src="data:image/svg+xml;base64,
+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0
+PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZp
+bGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xOS40MyAxMi45OGMuMDQtLjMyLjA3LS42NC4wNy0u
+OThzLS4wMy0uNjYtLjA3LS45OGwyLjExLTEuNjVjLjE5LS4xNS4yNC0uNDIuMTItLjY0bC0yLTMu
+NDZjLS4xMi0uMjItLjM5LS4zLS42MS0uMjJsLTIuNDkgMWMtLjUyLS40LTEuMDgtLjczLTEuNjkt
+Ljk4bC0uMzgtMi42NUMxNC40NiAyLjE4IDE0LjI1IDIgMTQgMmgtNGMtLjI1IDAtLjQ2LjE4LS40
+OS40MmwtLjM4IDIuNjVjLS42MS4yNS0xLjE3LjU5LTEuNjkuOThsLTIuNDktMWMtLjIzLS4wOS0u
+NDkgMC0uNjEuMjJsLTIgMy40NmMtLjEzLjIyLS4wNy40OS4xMi42NGwyLjExIDEuNjVjLS4wNC4z
+Mi0uMDcuNjUtLjA3Ljk4cy4wMy42Ni4wNy45OGwtMi4xMSAxLjY1Yy0uMTkuMTUtLjI0LjQyLS4x
+Mi42NGwyIDMuNDZjLjEyLjIyLjM5LjMuNjEuMjJsMi40OS0xYy41Mi40IDEuMDguNzMgMS42OS45
+OGwuMzggMi42NWMuMDMuMjQuMjQuNDIuNDkuNDJoNGMuMjUgMCAuNDYtLjE4LjQ5LS40MmwuMzgt
+Mi42NWMuNjEtLjI1IDEuMTctLjU5IDEuNjktLjk4bDIuNDkgMWMuMjMuMDkuNDkgMCAuNjEtLjIy
+bDItMy40NmMuMTItLjIyLjA3LS40OS0uMTItLjY0bC0yLjExLTEuNjV6TTEyIDE1LjVjLTEuOTMg
+MC0zLjUtMS41Ny0zLjUtMy41czEuNTctMy41IDMuNS0zLjUgMy41IDEuNTcgMy41IDMuNS0xLjU3
+IDMuNS0zLjUgMy41eiIvPgo8L3N2Zz4K
+  
+  " alt="settings" />
+          </a>
+          
+        </span>
+      </div>
+     
+     
+     </footer
+        
+        
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title|title}}
+
+{% endblock %}
+
+{% block content %}
+<div class="col-12 col-md-10 mb-3 mx-auto">
+    <div class="card">
+    <div class="card-body">
+
+<h5 class="card-title">Are you sure you want to delete the following:</h5>
+
+<p class="card-text">{{object.title}}</p>
+<form method="post" class="mb-3">{% csrf_token %}
+  
+  <button class="btn btn-danger btn-lg active " aria-pressed="true" >Yes, Delete</button>
+  
+
+</form>
+<a href="{{object.get_absolute_url}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">No,take me back</a>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
+
