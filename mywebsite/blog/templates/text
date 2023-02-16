@@ -1,0 +1,36 @@
+<div class="ui items">
+  <div class="item">
+    <div class="image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="content">
+      <a class="header">Header</a>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        Additional Details
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="image">
+      <img src="/images/wireframe/image.png">
+    </div>
+    <div class="content">
+      <a class="header">Header</a>
+      <div class="meta">
+        <span>Description</span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        Additional Details
+      </div>
+    </div>
+  </div>
+</div>

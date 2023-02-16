@@ -10,13 +10,14 @@ from django.utils import timezone
 
 def home_page(request):
 	now=timezone.now()
+	title ="Ifeanyi Anaga"
 	qs=BlogPost.objects.all().published()
 	paginator=Paginator(qs,4)
 	page=request.GET.get('page')
 	qs=paginator.get_page(page)
 	
 
-	title="Welcome to Anaga ifeanyi"
+	
 	context={"title":title,"blog_list":qs,"now":now}
 	return render(request,"home_page.html",context)
 	

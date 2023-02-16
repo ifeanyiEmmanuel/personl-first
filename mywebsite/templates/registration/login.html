@@ -1,8 +1,11 @@
 {% extends "base.html" %}
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
 
+{% load bootstrap5 %}
+
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 

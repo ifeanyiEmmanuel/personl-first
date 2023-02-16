@@ -1,106 +1,99 @@
 {% load static %}
-<div class="col-12 col-md-10 mb-3 mx-auto">
-    <div class="card {% if not blog_post.publish_date or  blog_post.publish_date > now  %} border border-warning text-dark {% endif %}">
-    
- <h6 class="card-title m-3">      {{blog_post.title|title}} </h6>
-    
-    
-    
-         <div class="card-body ">
-         {% if blog_post.image %}
-         
-        <a href="{{blog_post.get_absolute_url}}" >
-        
-        <img src="{{blog_post.image.url}}" class="card-img-top mb-2 img-responsive " width="100%" />
-         </a>
-        {% endif %}
-         
-         
-            {% if truncate %}
-            
-            <p class="card-text">
-                <small class="text-muted">{{blog_post.publish_date}}</small>
-                {% autoescape off %}
-            {{blog_post.content|linebreaks|truncatewords:30}}</p>
-            {% endautoescape %}
-             {% else %}
-             
-             {% autoescape off %}
-   
-              {{blog_post.content|linebreaks}}
-              
-              {% endautoescape %}
-              
-              {% if count %}
-                      
-     <a href="{% url 'comment' blog_post.slug %}" class="card-link">
-	   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMWVtIiBoZWlnaHQ9IjFlbSIgdmlld0JveD0iMCAwIDE2IDE2IiBjbGFzcz0i
-		 YmkgYmktY2hhdC1kb3RzLWZpbGwiIGZpbGw9ImN1cnJlbnRDb2xvciIgeG1sbnM9Imh0dHA6Ly93
-		 d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNiA4
-		 YzAgMy44NjYtMy41ODIgNy04IDdhOS4wNiA5LjA2IDAgMCAxLTIuMzQ3LS4zMDZjLS41ODQuMjk2
-		 LTEuOTI1Ljg2NC00LjE4MSAxLjIzNC0uMi4wMzItLjM1Mi0uMTc2LS4yNzMtLjM2Mi4zNTQtLjgz
-		 Ni42NzQtMS45NS43Ny0yLjk2NkMuNzQ0IDExLjM3IDAgOS43NiAwIDhjMC0zLjg2NiAzLjU4Mi03
-		 IDgtN3M4IDMuMTM0IDggN3pNNSA4YTEgMSAwIDEgMS0yIDAgMSAxIDAgMCAxIDIgMHptNCAwYTEg
-		 MSAwIDEgMS0yIDAgMSAxIDAgMCAxIDIgMHptMyAxYTEgMSAwIDEgMCAwLTIgMSAxIDAgMCAwIDAg
-		 MnoiLz4KPC9zdmc+" alt="My image">  
-
-     view all {{count}} comment{{count|pluralize}}</a>.
-     {% else %}
-     
-     <a href="{% url 'comment' blog_post.slug %}" class="card-link">
-	   <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMWVtIiBoZWlnaHQ9IjFlbSIgdmlld0JveD0iMCAwIDE2IDE2IiBjbGFzcz0i
-		 YmkgYmktY2hhdC1kb3RzIiBmaWxsPSJjdXJyZW50Q29sb3IiIHhtbG5zPSJodHRwOi8vd3d3Lncz
-		 Lm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMi42NzggMTEu
-		 ODk0YTEgMSAwIDAgMSAuMjg3LjgwMSAxMC45NyAxMC45NyAwIDAgMS0uMzk4IDJjMS4zOTUtLjMy
-		 MyAyLjI0Ny0uNjk3IDIuNjM0LS44OTNhMSAxIDAgMCAxIC43MS0uMDc0QTguMDYgOC4wNiAwIDAg
-		 MCA4IDE0YzMuOTk2IDAgNy0yLjgwNyA3LTYgMC0zLjE5Mi0zLjAwNC02LTctNlMxIDQuODA4IDEg
-		 OGMwIDEuNDY4LjYxNyAyLjgzIDEuNjc4IDMuODk0em0tLjQ5MyAzLjkwNWEyMS42ODIgMjEuNjgy
-		 IDAgMCAxLS43MTMuMTI5Yy0uMi4wMzItLjM1Mi0uMTc2LS4yNzMtLjM2MmE5LjY4IDkuNjggMCAw
-		 IDAgLjI0NC0uNjM3bC4wMDMtLjAxYy4yNDgtLjcyLjQ1LTEuNTQ4LjUyNC0yLjMxOUMuNzQzIDEx
-		 LjM3IDAgOS43NiAwIDhjMC0zLjg2NiAzLjU4Mi03IDgtN3M4IDMuMTM0IDggNy0zLjU4MiA3LTgg
-		 N2E5LjA2IDkuMDYgMCAwIDEtMi4zNDctLjMwNmMtLjUyLjI2My0xLjYzOS43NDItMy40NjggMS4x
-		 MDV6Ii8+CiAgPHBhdGggZD0iTTUgOGExIDEgMCAxIDEtMiAwIDEgMSAwIDAgMSAyIDB6bTQgMGEx
-		 IDEgMCAxIDEtMiAwIDEgMSAwIDAgMSAyIDB6bTQgMGExIDEgMCAxIDEtMiAwIDEgMSAwIDAgMSAy
-		 IDB6Ii8+Cjwvc3ZnPg==" alt="My image">  
-
-     Comments</a>.
-     {% endif %}
-
-            
-              
-              
-       
-            {% endif %}
-               {% if not detail %}
-             	  {% if not blog_post.publish_date or blog_post.publish_date > now %}
-               Draft   
-               {% endif %}
-               
-		   <a href="{{blog_post.get_absolute_url}}" class="card-link"> <img id="img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
-			   PSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iIzJiNzBiZiIgZD0i
-			   TTE2NjQgOTYwcS0xNTItMjM2LTM4MS0zNTMgNjEgMTA0IDYxIDIyNSAwIDE4NS0xMzEuNSAzMTYu
-			   NXQtMzE2LjUgMTMxLjUtMzE2LjUtMTMxLjUtMTMxLjUtMzE2LjVxMC0xMjEgNjEtMjI1LTIyOSAx
-			   MTctMzgxIDM1MyAxMzMgMjA1IDMzMy41IDMyNi41dDQzNC41IDEyMS41IDQzNC41LTEyMS41IDMz
-			   My41LTMyNi41em0tNzIwLTM4NHEwLTIwLTE0LTM0dC0zNC0xNHEtMTI1IDAtMjE0LjUgODkuNXQt
-			   ODkuNSAyMTQuNXEwIDIwIDE0IDM0dDM0IDE0IDM0LTE0IDE0LTM0cTAtODYgNjEtMTQ3dDE0Ny02
-			   MXEyMCAwIDM0LTE0dDE0LTM0em04NDggMzg0cTAgMzQtMjAgNjktMTQwIDIzMC0zNzYuNSAzNjgu
-			   NXQtNDk5LjUgMTM4LjUtNDk5LjUtMTM5LTM3Ni41LTM2OHEtMjAtMzUtMjAtNjl0MjAtNjlxMTQw
-			   LTIyOSAzNzYuNS0zNjh0NDk5LjUtMTM5IDQ5OS41IDEzOSAzNzYuNSAzNjhxMjAgMzUgMjAgNjl6
-			   Ii8+Cjwvc3ZnPgo=" alt="My image">  
-   Continue reading</a>
-
-            
-            {% endif %}
-            
-        </div>
-
-
+<div class="container overflow-hidden text-center" style="visibility:hidden;">
+  <div class="row gy-5">
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
     </div>
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
+    </div>
+  
+  </div>
+</div>
+
+<div class="container" style="border: 1px solid white;">
+
+
+
+  <div class="row d-flex justify-content-center" style="border: 1px solid red;">
+
+    <div class="col-md-6 p-4" style="border: 1px solid green;">
+<div class="ui items ms-2">
+  <div class="item">
+    {% if blog_post.image %}
+    <div class="image">
+      <a href="{{blog_post.get_absolute_url}}">
+      <img src="{{blog_post.image.url}}" style="height: 30vh;" class="ui medium rounded image">
+    </a>
+    </div>
+    {% endif %}
+    {% if truncate %}
+    <div class="content">
+      <a class="header text-white">{{blog_post.title|title}}</a>
+      <div class="meta">
+        {% autoescape off %}
+        <span class="text-white">{{blog_post.content|linebreaks|truncatewords:30}}</span>
+        {% endautoescape %}
+      </div>    
+      <div class="description text-white">
+        <p></p>
+      </div>
+      <div class="extra text-white">
+       
+        <div class="ui label"><i class="globe icon"></i> {{blog_post.publish_date}}</div>
+        <div class="ui button inverted "><a href="{{blog_post.get_absolute_url}}" class="text-decoration-none">Continue reading</a></div>
+        
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
 
 </div>
 
 
-   
 
 
 
+
+
+
+
+
+
+
+
+{% else %}
+
+
+
+
+    <div class="content">
+      <a class="header text-white">{{blog_post.title|title}}</a>
+     
+      
+      <div class="meta">
+        {% autoescape off %}
+        <span class="text-white">{{blog_post.content|linebreaks}}</span>
+        {% endautoescape %}
+      </div>
+
+     
+      <div class="description text-white">
+        <p></p>
+      </div>
+      <div class="extra text-white">
+        
+        <div class="ui label"><i class="globe icon"></i>{{blog_post.publish_date}}</div>
+        <div class="ui label"><i class="user icon"></i>{{blog_post.user.first_name}}</div>
+        
+      </div>
+    </div>
+  
+
+
+
+{% endif %}
+</div>
