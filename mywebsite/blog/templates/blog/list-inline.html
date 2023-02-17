@@ -11,28 +11,28 @@
   </div>
 </div>
 
-<div class="container" style="border: 1px solid white;">
+<div class="container">
 
 
 
-  <div class="row d-flex justify-content-center" style="border: 1px solid red;">
+  <div class="row d-flex justify-content-center">
 
-    <div class="col-md-6 p-4" style="border: 1px solid green;">
+    <div class="col-md-6 p-4">
 <div class="ui items ms-2">
   <div class="item">
     {% if blog_post.image %}
     <div class="image">
       <a href="{{blog_post.get_absolute_url}}">
-      <img src="{{blog_post.image.url}}" style="height: 30vh;" class="ui medium rounded image">
+      <img src="{{blog_post.image.url}}" style="height: 30vh;" class="ui medium rounded image" alt="Blog image">
     </a>
     </div>
     {% endif %}
     {% if truncate %}
     <div class="content">
-      <a class="header text-white">{{blog_post.title|title}}</a>
+      <a class="header text-white p-2 fs-4 titles text-decoration-none" style="color: #D9C179 !important;">{{blog_post.title|title}}</a>
       <div class="meta">
         {% autoescape off %}
-        <span class="text-white">{{blog_post.content|linebreaks|truncatewords:30}}</span>
+        <span class="text-white p-2 articles lh-lg">{{blog_post.content|linebreaks|truncatewords:30}}</span>
         {% endautoescape %}
       </div>    
       <div class="description text-white">
@@ -40,8 +40,8 @@
       </div>
       <div class="extra text-white">
        
-        <div class="ui label"><i class="globe icon"></i> {{blog_post.publish_date}}</div>
-        <div class="ui button inverted "><a href="{{blog_post.get_absolute_url}}" class="text-decoration-none">Continue reading</a></div>
+        <div class="ui label me-2" style="color:#594327 !important"><i class="globe icon"></i> {{blog_post.publish_date}}</div>
+        <div class="ui button inverted  "><a href="{{blog_post.get_absolute_url}}" class="text-decoration-none" style="color:#F2E3B6 !important;">Continue reading</a></div>
         
        
       </div>
@@ -71,12 +71,12 @@
 
 
     <div class="content">
-      <a class="header text-white">{{blog_post.title|title}}</a>
+      <a class="header text-white p-2 titles text-decoration-none fs-3" style="color: #D9C179 !important;">{{blog_post.title|title}}</a>
      
       
       <div class="meta">
         {% autoescape off %}
-        <span class="text-white">{{blog_post.content|linebreaks}}</span>
+        <span class="text-white p-2 articles lh-lg">{{blog_post.content|linebreaks}}</span>
         {% endautoescape %}
       </div>
 
@@ -86,8 +86,8 @@
       </div>
       <div class="extra text-white">
         
-        <div class="ui label"><i class="globe icon"></i>{{blog_post.publish_date}}</div>
-        <div class="ui label"><i class="user icon"></i>{{blog_post.user.first_name}}</div>
+        <div class="ui label" style="color:#594327 !important"><i class="globe icon"></i>{{blog_post.publish_date}}</div>
+        <div class="ui label" style="color:#594327 !important"><i class="user icon" ></i>{{blog_post.user.first_name}}</div>
         
       </div>
     </div>
