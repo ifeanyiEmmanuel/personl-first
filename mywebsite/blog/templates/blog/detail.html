@@ -51,34 +51,28 @@ justify-content:space-around;
         
         {% if request.user.is_staff %}
         {% if  author == visitor %}
-   <footer class=" footer mt-4 py-3 fixed-bottom bg-white shadow-sm ">
+  <footer class="fixed-bottom">
+<div class="container">
+  <div class="ui menu d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
+    <div class="item pt-2 pb-2">
+      <a href="{% url 'index' %}">
+      <div class="ui primary button inverted">  <i class="warehouse icon"></i> Home</div>
+      </a>
+    </div>
+    <div class="item">
+      <a href="{% url 'modify' object.slug %}">
+      <div class="ui button inverted purple"><i class="pencil alternate icon"></i> Update Post</div>
+    </a>
+    </div>
 
-<div class="container-fluid">
-  <span class="text-muted flex">
-   <a href="{{object.get_edit_url}}" class="card-link " id="black">
-   <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0
-PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMyAxNy4yNVYyMWgzLjc1TDE3Ljgx
-IDkuOTRsLTMuNzUtMy43NUwzIDE3LjI1ek0yMC43MSA3LjA0Yy4zOS0uMzkuMzktMS4wMiAwLTEu
-NDFsLTIuMzQtMi4zNGMtLjM5LS4zOS0xLjAyLS4zOS0xLjQxIDBsLTEuODMgMS44MyAzLjc1IDMu
-NzUgMS44My0xLjgzeiIvPjwvc3ZnPg==" alt="edit"/>
-        </a>
-
-   <a href="{{object.get_delete_url}}" class="card-link " id="black">
-	  <img src="data:image/svg+xml;base64,
-PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0
-PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiAxOWMwIDEuMS45IDIgMiAyaDhj
-MS4xIDAgMi0uOSAyLTJWN0g2djEyek0xOSA0aC0zLjVsLTEtMWgtNWwtMSAxSDV2MmgxNFY0eiIv
-Pjwvc3ZnPg==
-	  " class="card-link" alt="delete"/>
+    <div class="item">
+      <a href="{{object.get_delete_url}}">
+      <div class="ui button inverted red"><i class="fa-solid fa-trash-can"></i> Delete Post</div>
+    </a>
+    </div>
   
-  
-          </a>
-        </span>
-      </div>
-     
-     
-     </footer>
-      
+</div>
+</footer>      
 
         {% endif %}
         {% endif %}
