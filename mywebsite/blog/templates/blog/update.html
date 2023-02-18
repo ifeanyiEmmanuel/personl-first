@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "starter.html" %}
 {% load bootstrap5 %}
 
 {# Load CSS and JavaScript #}
@@ -7,20 +7,41 @@
 {% block title %}
 {{title|title}}
 {% endblock %}
+{% block background %}
+body{
+    background: #ffffff !important;
+}
+{% endblock %}
 {% block content %}
 {% load static %}
 
-<div class="col-12 col-md-10 mb-3 mx-auto">
-    <div class="card">
-    <div class="card-body">
+<div class="container overflow-hidden text-center" style="visibility:hidden;">
+  <div class="row gy-5">
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
+    </div>
+    </div>
+</div>
 
+<div class="container">
+<div class="row">
 
+  <div class="col-md d-flex justify-content-center">
+    
+<div class="ui segment black raised">
+  
 <h5 class="card-title">{{title | title}}</h5>
         
-<form method="post" action="." enctype="multipart/form-data">
+<form method="post" action="." enctype="multipart/form-data" class="ui form">
     {% csrf_token %}
     
-    {% bootstrap_form form %}
+    <div class="field">
+      <label>First Name</label>
+      {{form}}
+    </div>
     <!--
     
     {{ form.non_field_errors }}
@@ -64,15 +85,29 @@
       </div>
 
  -->
- {% buttons %}
-  <button type="submit" class="btn btn-primary">Update</button>
+
+  <div class="ui segment">
+    <button type="submit" class="ui button inverted purple" style="display:block; width: 100%;">Update</button>
+  </div>
   
-  {% endbuttons %}
+ 
     </form>
+
 </div>
 </div>
 </div>
 
+</div>
+<div class="container overflow-hidden text-center" style="visibility:hidden;">
+  <div class="row gy-5">
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-3">Custom column padding</div>
+    </div>
+    </div>
+</div>
 {% endblock %}
 
 
