@@ -109,7 +109,7 @@ def blog_post_update_view(request,slug):
 		return HttpResponseRedirect(reverse('detail',kwargs={'slug':slug}))
 	template_name="blog/update.html"
 	
-	context={"form":form,"title":f" update: {obj.title}"}
+	context={"obj":obj,"form":form,"title":f" update: {obj.title}"}
 	return render(request,template_name,context)
 	
 	

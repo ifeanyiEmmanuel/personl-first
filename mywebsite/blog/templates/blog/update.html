@@ -11,6 +11,13 @@
 body{
     background: #ffffff !important;
 }
+
+@media screen and (max-width:480px) {
+  .fa-solid{
+    margin-bottom:1em;
+  }
+  
+}
 {% endblock %}
 {% block content %}
 {% load static %}
@@ -20,26 +27,29 @@ body{
     <div class="col-6">
       <div class="p-3">Custom column padding</div>
     </div>
-    <div class="col-6">
-      <div class="p-3">Custom column padding</div>
-    </div>
+  
     </div>
 </div>
-
+<section>
+ 
 <div class="container">
+  <a href="{% url 'detail' obj.slug %}"><i class="fa-solid fa-arrow-left-long fa-2x text-dark"></i></a>
 <div class="row">
 
   <div class="col-md d-flex justify-content-center">
     
 <div class="ui segment black raised">
+  <div class="ui segment padded purple">
+    <h5 class="my-titles">{{title | title}}</h5>
+  </div>
   
-<h5 class="card-title">{{title | title}}</h5>
+
         
 <form method="post" action="." enctype="multipart/form-data" class="ui form">
     {% csrf_token %}
     
-    <div class="field">
-      <label>First Name</label>
+    <div class="field articles">
+      
       {{form}}
     </div>
     <!--
@@ -108,6 +118,7 @@ body{
     </div>
     </div>
 </div>
+</section>
 {% endblock %}
 
 
