@@ -18,7 +18,7 @@ Blog
 
 <script src="{% static 'js/jquery.js' %}"></script>  
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<p class="msg">{{message}}</p>
+<p class="msg"  style="visibility:hidden;">{{message}}</p>
 <script>
  $(document).ready(function(){
  $(".target").text($(".msg").text());
