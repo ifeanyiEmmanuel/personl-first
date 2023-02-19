@@ -104,7 +104,7 @@
   <div class="extra text-white ">
         
     <div class="ui label me-4" style="color:#594327 !important;cursor: pointer;  "><i class="fa-solid fa-comments fa-2x"></i> Comment</div>
-    <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i> Like </div>
+    <div class="ui label me-4 like" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i> Like </div>
     <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> Share</div>
     
     
@@ -147,6 +147,12 @@
               <a class="like text-white text-decoration-none">
               <i class="like icon "></i> 5 Likes
               </a>
+              {% if request.user == comment.user %}
+             
+              <a class="like text-white text-decoration-none" href="#">
+                <i class="pencil alternate icon"></i> Edit
+              </a>
+              {% endif %}
             </div>
             </div>
           </div>
