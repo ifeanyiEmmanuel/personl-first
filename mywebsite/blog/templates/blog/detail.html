@@ -73,7 +73,7 @@ justify-content:space-around;
 
 <div class="row {% if request.user.is_authenticated and request.user.is_staff  and author == visitor %}mb-4 {% endif %}">
   
-    {% include 'blog/list-inline.html' with blog_post=object detail=True %}
+    {% include 'blog/list-inline.html' with blog_post=object detail=True comment=comment %}
     
        
 

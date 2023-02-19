@@ -81,6 +81,9 @@ def blog_post_detail_view(request,slug):
 	now=timezone.now()
 	
 	obj=get_object_or_404(BlogPost,slug=slug)
+	
+	comment=obj.commentsection_set.all()
+	count=comment.count()
 	if obj.publish_date is None or obj.publish_date > now:
 		if request.user != obj.user:
 			template="<h1><center>PAGE NOT FOUND</center></h1>"
@@ -89,7 +92,7 @@ def blog_post_detail_view(request,slug):
 
 	author=obj.user
 	visitor=request.user 
-	context={"object":obj,'now':now,'author':author,'visitor':visitor,}
+	context={"object":obj,'now':now,'author':author,'visitor':visitor,"comment":comment}
 	template_name="blog/detail.html"
 	return render(request,template_name,context)
 	

@@ -27,7 +27,7 @@ class CreateUser(generic.CreateView):
 	     
 	     if user is not None:
 	     	login(self.request,user)
-	     	messages.success(self.request,'Account created successfully,  {}  are now logged in.'.format(username))
+	     	messages.success(self.request,'Account created successfully,  {} you are now logged in.'.format(username))
 	     return valid
 	     
 	     

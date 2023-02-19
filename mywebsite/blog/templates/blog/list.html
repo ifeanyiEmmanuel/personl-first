@@ -9,6 +9,57 @@ Blog
 {% load static %}
 
 <section>
+{% if messages %}
+
+{% for message in messages %}
+
+
+{% if message.tags == 'success' %}
+
+<script src="{% static 'js/jquery.js' %}"></script>  
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<p class="msg">{{message}}</p>
+<script>
+ $(document).ready(function(){
+ $(".target").text($(".msg").text());
+  $("#updatemessage").modal('show');
+ });
+</script>
+
+{% endif %}
+
+
+    
+{% endfor %}
+
+{% endif %}
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="updatemessage" tabindex="-1" aria-labelledby="updatemessageLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark site" id="updatemessageLabel">Perfect!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="text-center text-success mt-3">
+        <i class="far fa-check-circle fa-6x" style="color: #a5dc86;"></i>
+        </div>
+        <br>
+        <div class="mb-3 text-dark carousel-p target articles"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" style="width:65px;" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
 
 
   {% for object in blog_list %}
