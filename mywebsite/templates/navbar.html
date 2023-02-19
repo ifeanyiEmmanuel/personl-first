@@ -86,3 +86,31 @@ Profile</a>
 
 
       
+
+
+
+
+
+ <div class="ui stacked segment">
+        {{form.non_field_errors}}
+        <div class="field">
+
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            
+            {{form.username.errors}}
+            {{form.username}}
+
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+           
+            {{form.password.errors}}
+            {{form.password}}
+           
+          </div>
+        </div>
+        <input type="submit" class="ui fluid large teal submit button " value="Login">
+      </div>

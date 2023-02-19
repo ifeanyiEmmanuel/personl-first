@@ -106,6 +106,7 @@ def blog_post_update_view(request,slug):
 		messageText="The blog post \"{}\" was changed successfully".format(PostTitle)
 		form.save()
 		messages.add_message(request,messages.SUCCESS,messageText)
+		
 		return HttpResponseRedirect(reverse('detail',kwargs={'slug':slug}))
 	template_name="blog/update.html"
 	
@@ -210,6 +211,23 @@ def profile(request):
 					qs=(qs | my_qs).distinct
 			
 			full_name=request.user.get_full_name
+		elif request.user.is_authenticated:
+			qs=BlogPost.objects.filter(user=request.user)
+			form = SelectForm(request.POST or None)
+			if form.is_valid():
+				obj = form.cleaned_data.get('choice')
+				if obj == 'A':
+					qs=BlogPost.objects.filter(user=request.user)
+				elif obj == 'p':
+					qs=BlogPost.objects.filter(user=request.user).published()
+				elif obj == 'D':
+					qs =BlogPost.objects.filter(user=request.user,publish_date__gte=now)
+					my_qs =BlogPost.objects.filter(user=request.user,publish_date=None)
+					qs=(qs | my_qs).distinct
+			full_name=request.user.get_full_name
+
+
+
 		
 		context={'full_name':full_name,'now':now,'object_list':qs,'form':form}
 		return render(request,template,context)

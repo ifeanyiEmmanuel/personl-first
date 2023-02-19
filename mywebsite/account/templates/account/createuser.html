@@ -1,82 +1,183 @@
-{% extends "starter.html" %}
-{% load bootstrap5 %}
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>Create an account</title>
+
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/components/button.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/components/segment.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/components/search.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'semantic/components/placeholder.css' %}">
+   
+     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+  
+
+  <script src="assets/library/jquery.min.js"></script>
+  <script src="../dist/components/form.js"></script>
+  <script src="../dist/components/transition.js"></script>
+
+
+
+
+
+
+
+  <style type="text/css">
+
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+
+
+
+
+
+
+.my-titles{
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+.articles{
+ font-family: 'Poppins', sans-serif;;
+}
+    body {
+      background-color: whitesmoke;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+
+    .nonfield{
+      list-style-type: none;
+      color:red !important;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+  </style>
+  <script>
+  $(document).ready(function() {
+    $('.ui.form')
+  .form({
+    fields: {
+     
+      username : 'empty',
+      password : ['minLength[6]', 'empty'],
+      
+     
+    }
+  })
+;
+  });
+  
+  </script>
+</head>
+<body>
+  {% load static %}
+  {% load bootstrap5 %}
 
 {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-{% block content %}
-{% bootstrap_messages %}
 
-<div class="row">
-<div class="col-12 col-md-8 mb-3 mx-auto">
-    <div class="card">
-    
- <h6 class="card-title m-3">Create an Account</h6>
+
+<div  style="background-color: #DADADA;" class="p-4">
+
+
+<div class="container mb-5">
  
-  <div class="card-body">
+  <div class="row">
+    <div class="col-sm d-flex justify-content-center">
+<div class="ui segment raised rounded">
+  <div class="ui middle aligned center aligned grid mt-2 mb-2 p-2">
+    <div class="column">
+         <h2 class="ui teal image header">
+      <div class="content">Create account</div></h2>
+      </div>
+    </div>
+      <form  method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="ui fluid large teal submit button mb-2" value="Create Account">
+        <small>By creating an account, you agree to INTERQUESTS's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice.</a></small><br>
+        <small>
+          Already have an account? <a href="{% url 'login' %}"> Sign-In</a></small>
+       
+      </form>
+    </div>
 
-<form method="post" action=".">
-{% csrf_token %}
-
-{% bootstrap_form form %}
-
-
-<!--
-{{ form.non_field_errors }}
-
-<div class="form-group">
-{{form.first_name.errors}}
-{{form.first_name.label_tag}}
-{{form.first_name}}
-</div>
-
-<div class="form-group">
-{{form.last_name.errors}}
-{{form.last_name.label_tag}}
-{{form.last_name}}
-</div>
-
-<div class="form-group">
-{{form.username.errors}}
-{{form.username.label_tag}}
-{{form.username}}
-</div>
-
-<div class="form-group">
-{{form.email.errors}}
-{{form.email.label_tag}}
-{{form.email}}
-</div>
-
-<div class="form-group">
-{{form.password1.errors}}
-{{form.password1.label_tag}}
-{{form.password1}}
-</div>
-
-<div class="form-group">
-{{form.password2.errors}}
-{{form.password2.label_tag}}
-{{form.password2}}
-
-</div>
--->
-{% buttons %}
-
-<button type="submit" class="btn btn-block btn-primary">Sign up</button>
-{% endbuttons %}
-</form>
-
-
-
-</div>
-</div>
+    </div>
+    
+  </div>
 </div>
 
 </div>
 
-{% endblock %}
 
 
 
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+<script src="{% static 'semantic/semantic.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 

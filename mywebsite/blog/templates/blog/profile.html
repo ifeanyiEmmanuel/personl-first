@@ -44,19 +44,19 @@ Dashboard | Profile
 	  NWwzNjIgMzYycTE5IDE5IDQ1IDE5IDI3IDAgNDYtMTlsNTQzLTU0M3ExOC0xOCAxOC00NXptMjUy
 	  IDE2MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5
 	  LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUg
-	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image">  </p>
+	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image" style="height:3vh;">  </p>
 	  
 	  </div>
   <div class="col-12 col-md-10 mx-auto">
   
-<p class="text-white">Status:{% if request.user.is_superuser  %} Admin {% else %} Staff {% endif %} <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
+<p class="text-white">Status:{% if request.user.is_superuser  %} Admin {% elif request.user.is_staff %} Staff {% else %} User {% endif %} <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxNzkyIDE3OTIiIHhtbG5z
 	  PSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZmlsbD0iIzcwYmYyYiIgZD0i
 	  TTE0MTIgNzM0cTAtMjgtMTgtNDZsLTkxLTkwcS0xOS0xOS00NS0xOXQtNDUgMTlsLTQwOCA0MDct
 	  MjI2LTIyNnEtMTktMTktNDUtMTl0LTQ1IDE5bC05MSA5MHEtMTggMTgtMTggNDYgMCAyNyAxOCA0
 	  NWwzNjIgMzYycTE5IDE5IDQ1IDE5IDI3IDAgNDYtMTlsNTQzLTU0M3ExOC0xOCAxOC00NXptMjUy
 	  IDE2MnEwIDIwOS0xMDMgMzg1LjV0LTI3OS41IDI3OS41LTM4NS41IDEwMy0zODUuNS0xMDMtMjc5
 	  LjUtMjc5LjUtMTAzLTM4NS41IDEwMy0zODUuNSAyNzkuNS0yNzkuNSAzODUuNS0xMDMgMzg1LjUg
-	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image">  </p>
+	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image" style="height:3vh;">  </p>
 	  
 	  </div>
 	  
@@ -64,11 +64,26 @@ Dashboard | Profile
 	  </div>
 
     <div class="row">
+    {% if request.user.is_authenticated and request.user.is_staff %}
         {% for object in object_list %}
+     
         {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
+       
+
+
+
+ 
         
         
         {% endfor %}
+
+        {% else %}
+
+<p class="text-danger">No posts</p>
+
+
+
+        {% endif %}
         
         </div>
     <div class="container overflow-hidden text-center" style="visibility:hidden;">
@@ -87,14 +102,21 @@ Dashboard | Profile
 <footer class="fixed-bottom">
 <div class="container">
   <div class="ui menu d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
-    <div class="item pt-2 pb-2">
+    <div class="item">
       <a href="{% url 'home' %}">
       <div class="ui primary button inverted">  <i class="warehouse icon"></i>Home</div>
       </a>
     </div>
+   {% if request.user.is_authenticated and request.user.is_staff %}
     <div class="item">
       <a href="{% url 'blog_new' %}">
       <div class="ui button inverted purple"><i class="pencil alternate icon"></i>Create Post</div>
+    </a>
+    </div>
+   {% endif %}
+    <div class="item">
+      <a href="{% url 'index' %}">
+      <div class="ui button inverted teal">Blog  Posts</div>
     </a>
     </div>
   

@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}">
-     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
  <style>
 {% block background %}
+
 body{
     background: #13111C;
 }
+
 {% endblock %}
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,600&display=swap');
@@ -63,11 +65,11 @@ body{
           <ul class="dropdown-menu">
           {% if request.user.is_authenticated %}
             <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="fa-solid fa-user-large"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="{% url 'logout' %}?next={{request.path}}">Logout</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}?next={{request.path}}"><i class="sign out alternate icon"></i> Logout</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
             {% else %}
-            <li><a class="dropdown-item" href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+            <li><a class="dropdown-item" href="{% url 'login' %}?next={{request.path}}"><i class="sign in alternate icon"></i> Login</a></li>
             <li><a class="dropdown-item" href="{% url 'createuser' %}"><i class="fa-solid fa-user-plus"></i> Signup</a></li>
 
             {% endif %}

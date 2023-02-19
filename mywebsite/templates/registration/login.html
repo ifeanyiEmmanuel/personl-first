@@ -1,6 +1,12 @@
 
 <!DOCTYPE html>
 {% load static %}
+
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <html>
 <head>
   <!-- Standard Meta -->
@@ -65,61 +71,38 @@
     .column {
       max-width: 450px;
     }
+
+   label{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+   }
+
+
   </style>
   <script>
-  $(document)
-    .ready(function() {
-      $('.ui.form')
-        .form({
-          fields: {
-            email: {
-              identifier  : 'email',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your password'
-                },
-                {
-                  type   : 'length[6]',
-                  prompt : 'Your password must be at least 6 characters'
-                }
-              ]
-            }
-          }
-        })
-      ;
-    })
-  ;
+  $(document).ready(function() {
+    $('.ui.form')
+  .form({
+    fields: {
+      name     : 'empty',
+      gender   : 'empty',
+      username : 'empty',
+      password : ['minLength[6]', 'empty'],
+      skills   : ['minCount[2]', 'empty'],
+      terms    : 'checked'
+    }
+  })
+;
+  });
+  
   </script>
 </head>
 <body>
-{% if messages %} 
 
-<div class="alert alert-success messages" role="alert"> {% for message in messages %} 
-
-  <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-{{ message}}
-</div>
-{% endfor %} 
-
-{% endif %}
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui teal image header">
-      <img src="assets/images/logo.png" class="image">
+      
       <div class="content">
         Log-in to your account
       </div>
@@ -127,38 +110,12 @@
     <form class="ui large form" method="post" action="{% url 'login' %}">
     {% csrf_token %}
   
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            {{form.username}}
-            {{form.username.errors}}
-
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            {{form.password}}
-            {{form.password.errors}}
-          </div>
-        </div>
-        <input type="submit" class="ui fluid large purple submit button inverted" value="Login">
-      </div>
-
-      <div class="ui error message">
-      {% if form.errors %}
-<p>Your email and password didn't match. Please try again.</p>
-{% endif %}
-{% if next %}
-{% if user.is_authenticated %}
-<p>Your account doesn't have access to this page. To proceed,
-please login with an account that has access.</p>
-{% else %}
-<p>Please login to see this page.</p>
-{% endif %}
-{% endif %}
-      </div>
+     
+  <div class="segment ui raised rounded">
+    {% bootstrap_form form %}
+    <input type="submit" class="ui fluid large teal submit button mb-2" value="Login">
+  </div>
+      
 
     </form>
 
