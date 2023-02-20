@@ -10,7 +10,8 @@
 <div class="container">
 <div class="row">
 <div class="col-9 col-md-10 mx-auto">
-		<form method="post"  action=".">{%csrf_token %}
+		<form method="post"  action=".">
+		{%csrf_token %}
 		{% bootstrap_form form show_label=False %}
 
 </div>

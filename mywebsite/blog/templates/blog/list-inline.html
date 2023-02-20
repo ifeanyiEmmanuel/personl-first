@@ -1,4 +1,9 @@
 {% load static %}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <div class="container overflow-hidden text-center" style="visibility:hidden;">
   <div class="row gy-5">
     <div class="col-6">
@@ -103,7 +108,7 @@
 
   <div class="extra text-white ">
         
-    <div class="ui label me-4" style="color:#594327 !important;cursor: pointer;  "><i class="fa-solid fa-comments fa-2x"></i> Comment</div>
+    <div data-bs-toggle="modal" data-bs-target="#exampleModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> Comment</div>
     <div class="ui label me-4 like" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i> Like </div>
     <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> Share</div>
     
@@ -124,6 +129,51 @@
         </div>
         {% load humanize %}
       </div>
+    
+
+<!--modal begining -->
+      <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{object.title|title}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="." method="post">
+          {% csrf_token %}
+          {% bootstrap_form form show_label=False %}
+          {% if not object.publish_date or object.publish_date > now %}
+	<div>
+          <button type="submit" class="ui button purple inverted"  style="display: block; width:100%" disabled>post</button>
+        </div>
+			{% else %}
+      <div>
+			<button type="submit" class="ui button purple inverted" style="display: block; width:100%">post</button>
+     
+    </div>
+			{% endif %}
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!--modal end -->
 {% for comment in comment %}
       <div class="ui feed mb-4">
         <div class="event">

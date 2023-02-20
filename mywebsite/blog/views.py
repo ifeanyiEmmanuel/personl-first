@@ -89,10 +89,18 @@ def blog_post_detail_view(request,slug):
 			template="<h1><center>PAGE NOT FOUND</center></h1>"
 			return HttpResponseNotFound(template)
 	
-
+	form=CommentSectionModelForm(request.POST or None)
+	if form.is_valid():
+		item=form.save(commit=False)
+		item.user=request.user
+		item.blogpost=obj
+		item.save()
+		form=CommentSectionModelForm()
+		return HttpResponseRedirect(reverse('detail',kwargs={'slug':slug}))
+		
 	author=obj.user
 	visitor=request.user 
-	context={"object":obj,'now':now,'author':author,'visitor':visitor,"comment":comment}
+	context={"object":obj,'now':now,'author':author,'visitor':visitor,"comment":comment,"form":form}
 	template_name="blog/detail.html"
 	return render(request,template_name,context)
 	
