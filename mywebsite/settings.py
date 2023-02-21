@@ -219,7 +219,7 @@ BOOTSTRAP5 = {
 
 
 
-CSRF_TRUSTED_ORIGINS = ['notyet.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://notyet.up.railway.app','https://www.notyet.up.railway.app']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

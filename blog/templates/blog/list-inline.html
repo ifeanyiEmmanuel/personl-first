@@ -108,7 +108,7 @@
 
   <div class="extra text-white ">
         
-    <div data-bs-toggle="modal" data-bs-target="#exampleModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+    <div data-bs-toggle="modal" {% if request.user.is_authenicated %} data-bs-target="#exampleModal" {% else %} data-bs-target="#authenticateModal" {% endif %} class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
     <div class="ui label me-4 like" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i>  </div>
     <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> </div>
     
@@ -164,6 +164,26 @@
 			{% endif %}
           
         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--#authenticateModal--->
+<div class="modal fade" id="authenticateModal" tabindex="-1" aria-labelledby="#authenticateModalModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="#authenticateModalLabel">{{object.title|title}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+       
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
