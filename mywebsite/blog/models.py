@@ -82,7 +82,7 @@ class BlogPost(models.Model):
 	
 	
 class CommentSection(models.Model):
-	c_id = models.UUIDField(max_length=8,primary_key=False, default=uuid.uuid4,editable=False,unique=True)
+	#c_id = models.UUIDField(max_length=8,primary_key=False, default=uuid.uuid4,editable=False,unique=True)
 	user=models.ForeignKey(User,on_delete=models.CASCADE,default=1)
 	blogpost=models.ForeignKey(BlogPost,on_delete=models.CASCADE,default=1)
 	comment=models.TextField()

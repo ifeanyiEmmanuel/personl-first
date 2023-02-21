@@ -12,7 +12,7 @@ urlpatterns = [
 
 	path('',Blog_post_list_view.as_view(),name="index"),
 	path('<str:slug>/',views.blog_post_detail_view,name="detail"),
-	path('<str:slug>/comment/',views.comment_view,name="comment"),
+	#path('<str:slug>/comment/',views.comment_view,name="comment"),
 	path('<str:slug>/comment/edit/<uuid:comment_id>/',views.update_comment,name="update_comment"),
 	
 	

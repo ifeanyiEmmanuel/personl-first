@@ -144,7 +144,7 @@ def blog_post_delete_view(request,slug):
 	
 	context={"object":obj,'title':title}
 	return render(request,template_name,context)	
-	
+"""	
 @login_required
 def comment_view(request,slug):
 	now=timezone.now()
@@ -164,7 +164,8 @@ def comment_view(request,slug):
 	return render(request,template_name,context)
 	
 #This view is responsible for updating comments	
-	
+"""
+
 @login_required
 def update_comment(request,slug,comment_id):
 	
