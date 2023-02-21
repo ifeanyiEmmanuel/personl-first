@@ -87,6 +87,8 @@
     </div>
   
   </div>
+  
+  <div class="container">
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     {% if blog_list.has_previous %}
@@ -106,6 +108,6 @@
     Page {{blog_list.number}} of {{blog_list.paginator.num_pages}}.
   </small>
 </nav>
-
+</div>
 
 {% endblock %}

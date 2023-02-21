@@ -107,8 +107,11 @@
       <!--segment-->
 
   <div class="extra text-white ">
-        
-    <div data-bs-toggle="modal" {% if request.user.is_authenicated %} data-bs-target="#exampleModal" {% else %} data-bs-target="#authenticateModal" {% endif %} class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+       {% if request.user.is_authenticated %} 
+    <div data-bs-toggle="modal"  data-bs-target="#exampleModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+    {% else %}
+    <div data-bs-toggle="modal"  data-bs-target="#authenticateModal" class="ui label me-4" style="color:#594327 !important;cursor: pointer;"><i class="fa-solid fa-comments fa-2x"></i> </div>
+   {% endif %}
     <div class="ui label me-4 like" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-thumbs-up fa-2x"></i>  </div>
     <div class="ui label me-4" style="color:#594327 !important; cursor: pointer;"><i class="fa-solid fa-share-from-square fa-2x"></i> </div>
     
@@ -182,7 +185,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       
+       <h4 class="text-center articles">You are not logged in</h4>
+       <p class="text-center mt-2 articles"><a href="{% url 'login' %}?next={{request.path}}">Click here</a> to Login</p>
        
       </div>
       <div class="modal-footer">
