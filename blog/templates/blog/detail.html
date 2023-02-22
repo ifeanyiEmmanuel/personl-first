@@ -83,28 +83,21 @@ justify-content:space-around;
         
         {% if request.user.is_staff %}
         {% if  author == visitor %}
-  <footer class="fixed-bottom">
-<div class="container">
-  <div class="ui menu d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
-    <div class="item pt-2 pb-2">
-      <a href="{% url 'index' %}">
-      <div class="ui primary button inverted">  <i class="warehouse icon"></i> Home</div>
-      </a>
-    </div>
-    <div class="item">
-      <a href="{% url 'modify' object.slug %}">
-      <div class="ui button inverted purple"><i class="pencil alternate icon"></i> Update Post</div>
-    </a>
-    </div>
+        <footer class="fixed-bottom pt-2  pb-2">
+          <div class="container d-flex justify-content-center">
+            <ul class="text-white">
 
-    <div class="item">
-      <a href="{{object.get_delete_url}}">
-      <div class="ui button inverted red"><i class="fa-solid fa-trash-can"></i> Delete Post</div>
-    </a>
-    </div>
-  </div>
-</div>
-</footer>      
+              <li> <a href="{% url 'home' %}" class="ui button inverted green me-2" title="Home"><i class="warehouse icon"></i></a></li>
+              <li> <a href="{% url 'modify' object.slug %}" class="ui button inverted teal me-2" title="Update Post"><i class="pencil alternate icon"></i></a></li>
+            
+ <li><a href="{{object.get_delete_url}}" class="ui button inverted red me-2" title="Delete"><i class="fa-solid fa-trash-can"></i></a></li>
+     
+            </ul>
+            </div>
+          </footer>
+    
+
+      
 
         {% endif %}
         {% endif %}
@@ -113,9 +106,6 @@ justify-content:space-around;
 
 
 </div>
-
-
-
 
 
 

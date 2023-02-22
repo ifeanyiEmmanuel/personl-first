@@ -78,7 +78,7 @@ Dashboard | Profile
 <div class="container p-2">
 <div class="row">
   
-  <div class="col-12 col-md-10  mb-4">
+  <div class="col-12 col-md-10  mb-4 text-white">
     <form action="" method="post">
       {% csrf_token %}
     {{form}}
@@ -153,16 +153,16 @@ Dashboard | Profile
     </div>
     </div>
 </div>    
-<footer class="fixed-bottom">
-<div class="container">
+<footer class="fixed-bottom pt-2  pb-2">
+<div class="container d-flex justify-content-center">
 
   <ul class="text-white">
 
-  <li> <a href="{% url 'home' %}" class="ui button inverted blue">Home</a></li>
+  <li> <a href="{% url 'home' %}" class="ui button inverted green me-2" title="Home"><i class="warehouse icon"></i></a></li>
   
-  <li><a href="{% url 'index' %}" class="ui button inverted blue">Blog</a></li>
+  <li><a href="{% url 'index' %}" class="ui button inverted blue me-2" title="blog posts"><i class="fa-sharp fa-solid fa-blog"></i></a></li>
    {% if request.user.is_authenticated and request.user.is_staff %}
-   <li><a href="{% url 'blog_new' %}" class="ui button inverted blue">Create Blogpost</a></li>
+   <li><a href="{% url 'blog_new' %}" class="ui button inverted teal me-2" title="Create blogpost"><i class="pencil alternate icon"></i></a></li>
    {% endif %}
   </ul>
 </div>
