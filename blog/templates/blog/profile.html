@@ -1,7 +1,7 @@
 {% extends "starter.html" %}
 {% load static %}
 
-	    {% block style %}
+{% block style %}
 	    
 	    
 .flex{
@@ -9,9 +9,11 @@ display:flex;
 justify-content:space-between;
 }
 
+
+
 	    
 	   
-	    {% endblock %}
+{% endblock %}
 
 
 
@@ -153,29 +155,20 @@ Dashboard | Profile
 </div>    
 <footer class="fixed-bottom">
 <div class="container">
-<div class="row d-flex justify-content-center">
-  <div class="col-md">
-  <div class=" d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
-    <div>
-      <a href="{% url 'home' %}">
-      <div class="ui primary button inverted">  <i class="warehouse icon"></i>Home</div>
-      </a>
-    </div>
+
+  <ul class="text-white">
+
+  <li> <a href="{% url 'home' %}" class="ui button inverted blue">Home</a></li>
+  
+  <li><a href="{% url 'index' %}" class="ui button inverted blue">Blog</a></li>
    {% if request.user.is_authenticated and request.user.is_staff %}
-    <div>
-      <a href="{% url 'blog_new' %}">
-      <div class="ui button inverted purple"><i class="pencil alternate icon"></i>Create Post</div>
-    </a>
-    </div>
+   <li><a href="{% url 'blog_new' %}" class="ui button inverted blue">Create Blogpost</a></li>
    {% endif %}
-    <div>
-      <a href="{% url 'index' %}">
-      <div class="ui button inverted teal">Blog  Posts</div>
-    </a>
-    </div>
-  </div>
-  </div>
-</div>
+  </ul>
 </div>
 </footer>
 {% endblock %}
+
+  
+  
+  
