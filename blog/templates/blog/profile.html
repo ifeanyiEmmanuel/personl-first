@@ -153,27 +153,29 @@ Dashboard | Profile
 </div>    
 <footer class="fixed-bottom">
 <div class="container">
-
-  <div class="ui menu d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
-    <div class="item">
+<div class="row d-flex justify-content-center">
+  <div class="col-md">
+  <div class=" d-flex justify-content-center pt-2 pb-2" style="background:#13111C !important;">
+    <div>
       <a href="{% url 'home' %}">
       <div class="ui primary button inverted">  <i class="warehouse icon"></i>Home</div>
       </a>
     </div>
    {% if request.user.is_authenticated and request.user.is_staff %}
-    <div class="item">
+    <div>
       <a href="{% url 'blog_new' %}">
       <div class="ui button inverted purple"><i class="pencil alternate icon"></i>Create Post</div>
     </a>
     </div>
    {% endif %}
-    <div class="item">
+    <div>
       <a href="{% url 'index' %}">
       <div class="ui button inverted teal">Blog  Posts</div>
     </a>
     </div>
   </div>
-
+  </div>
+</div>
 </div>
 </footer>
 {% endblock %}
