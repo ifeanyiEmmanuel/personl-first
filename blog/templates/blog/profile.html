@@ -113,31 +113,56 @@ Dashboard | Profile
 	  MTAzIDI3OS41IDI3OS41IDEwMyAzODUuNXoiLz4KPC9zdmc+Cg== " alt="My image" style="height:3vh;">  </p>
 	  
 	  </div>
-	  
+	 
+       
+   
+
+   
+
+
+
+       
 	  
 	  </div>
 
     <div class="row">
-    {% if request.user.is_authenticated and request.user.is_staff %}
-        {% for object in object_list %}
-     
-        {% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
-       
 
+{% if request.user.is_authenticated %}
+<p class="text-white">user is is_authenticated</p>
 
-
+{% if request.user.is_staff or request.user.is_superuser %}
+{% if object_list %}
+{% for object in object_list %}
  
-        
-        
-        {% endfor %}
-
-        {% else %}
-
-<p class="text-danger">No posts</p>
+     
+{% include 'blog/list-inline.html' with blog_post=object truncate=True detail=False %}
 
 
 
-        {% endif %}
+{% endfor %}
+
+{% else %}
+<section>
+  <div class="container">
+    <h4 class="text-center articles text-white">No Blog post</h4>
+  </div>
+</section>
+{% endif %}
+
+
+{% else %}
+<p class="text-white">user is not staff or superuser</p>
+
+{% endif %}
+
+
+
+
+
+
+
+
+{% endif %}
         
         </div>
     <div class="container overflow-hidden text-center" style="visibility:hidden;">
